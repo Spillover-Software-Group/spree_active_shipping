@@ -5,6 +5,11 @@ class Spree::ActiveShippingConfiguration < Spree::Preferences::Configuration
   preference :ups_key, :string, default: "developer_key"
   preference :shipper_number, :string, default: nil
 
+  preference :ups_client_id, :string, default: nil
+  preference :ups_client_secret, :string, default: nil
+  preference :ups_access_token, :string, default: nil
+  preference :ups_refresh_token, :string, default: nil
+
   preference :fedex_login, :string, default: "meter_no"
   preference :fedex_password, :string, default: "special_sha1_looking_thing_sent_via_email"
   preference :fedex_account, :string, default: "account_no"
