@@ -19,6 +19,13 @@ class Spree::ActiveShippingConfiguration < Spree::Preferences::Configuration
   preference :usps_commercial_base, :boolean, default: false
   preference :usps_commercial_plus, :boolean, default: false
 
+  preference :usps_client_id, :string, default: nil
+  preference :usps_client_secret, :string, default: nil
+  preference :usps_customer_registration_id, :string, default: nil
+  preference :usps_mailer_id, :string, default: nil
+  preference :usps_access_token, :string, default: nil
+  preference :usps_refresh_token, :string, default: nil
+
   preference :canada_post_login, :string, default: "canada_post_login"
 
   preference :australia_post_login, :string, default: "australia_post_api_key"
