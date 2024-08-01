@@ -20,7 +20,7 @@ module SpreeActiveShippingExtension
       #http://github.com/BDQ/active_shipping/commit/2f2560d53aa7264383e5a35deb7264db60eb405a
       ActiveShipping::UPS.send(:include, Spree::ActiveShipping::UpsOverride)
       ActiveShipping::UPSRest.send(:include, Spree::ActiveShipping::UpsRestOverride)
-      ActiveShipping::USPSRest.send(:include, Spree::ActiveShipping::USPSRestOverride)
+      ActiveShipping::USPSRest.send(:include, Spree::ActiveShipping::UspsRestOverride)
 
       # Fix Canada Post "Ready to ship" package
       ActiveShipping::CanadaPost.send(:include, Spree::ActiveShipping::CanadaPostOverride)

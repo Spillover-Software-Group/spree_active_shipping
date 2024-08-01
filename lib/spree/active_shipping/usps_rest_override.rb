@@ -1,6 +1,6 @@
 module Spree
   module ActiveShipping
-    module UpsRestOverride
+    module UspsRestOverride
       def self.included(base)
         base.class_eval do
           def find_rates(origin, destination, packages, options={})
