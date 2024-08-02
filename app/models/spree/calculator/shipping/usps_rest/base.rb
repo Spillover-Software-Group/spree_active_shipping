@@ -48,6 +48,7 @@ module Spree
               service_code = "#{SERVICE_CODE_PREFIX[service_code_prefix_key]}:#{rate[:service_code]}"
               [service_code, rate[:price]]
             end
+            raise rates.inspect
             rate_hash = Hash[*rates.flatten]
 
             raise rate_hash.inspect
