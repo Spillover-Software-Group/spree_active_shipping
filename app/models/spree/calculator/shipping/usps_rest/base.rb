@@ -49,6 +49,8 @@ module Spree
               [service_code, rate[:price]]
             end
             rate_hash = Hash[*rates.flatten]
+
+            raise rate_hash.inspect
             return rate_hash
           rescue ::ActiveShipping::Error => e
 
