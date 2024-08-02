@@ -2,6 +2,11 @@ module Spree
   module Calculator::Shipping
     module UspsRest
       class Base < Spree::Calculator::Shipping::ActiveShipping::Base
+        SERVICE_CODE_PREFIX ||= {
+          international: 'intl',
+          domestic: 'dom'
+        }
+        
         def compute_package(package)
           order = package.order
           stock_location = package.stock_location
