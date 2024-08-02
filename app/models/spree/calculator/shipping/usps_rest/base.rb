@@ -70,6 +70,16 @@ module Spree
         def max_weight_for_country(country)
           1120  # 70 lbs
         end
+
+        def rate_options
+          if Spree::ActiveShipping::Config[:usps_commercial_plus]
+            { commercial_plus: true }
+          elsif Spree::ActiveShipping::Config[:usps_commercial_base]
+            { commercial_base: true }
+          else
+            {}
+          end
+        end
       end
     end
   end
