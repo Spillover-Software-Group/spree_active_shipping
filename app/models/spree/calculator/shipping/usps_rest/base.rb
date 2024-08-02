@@ -6,7 +6,7 @@ module Spree
           international: 'intl',
           domestic: 'dom'
         }
-        
+
         def compute_package(package)
           order = package.order
           stock_location = package.stock_location
@@ -45,8 +45,9 @@ module Spree
             # service_code_prefix_key = response.params.keys.first == 'IntlRateV2Response' ? :international : :domestic
             service_code_prefix_key = :domestic
             rates = response.rates.collect do |rate|
-              service_code = "#{SERVICE_CODE_PREFIX[service_code_prefix_key]}:#{rate.service_code}"
-              [service_code, rate.price]
+              raise rate.inspect
+              service_code = "#{SERVICE_CODE_PREFIX[service_code_prefix_key]}:#{rate[:service_code]}"
+              [service_code, rate[:price]]
             end
             rate_hash = Hash[*rates.flatten]
             return rate_hash
