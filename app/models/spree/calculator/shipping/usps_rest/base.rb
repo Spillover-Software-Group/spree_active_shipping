@@ -44,8 +44,8 @@ module Spree
             # turn this beastly array into a nice little hash
             # service_code_prefix_key = response.params.keys.first == 'IntlRateV2Response' ? :international : :domestic
             service_code_prefix_key = :domestic
-            raise response.rates.inspect
-            rates = response.rates.collect do |rate|
+
+            rates = response.rates do |rate|
               service_code = "#{SERVICE_CODE_PREFIX[service_code_prefix_key]}:#{rate[:service_code]}"
               [service_code, rate[:price]]
             end
