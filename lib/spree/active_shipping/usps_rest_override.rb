@@ -4,7 +4,8 @@ module Spree
       def self.included(base)
         base.class_eval do
           def find_rates(origin, destination, packages, options={})
-          raise "from the override"
+          raise "from the override here origin: #{origin} and destination: #{destination} and packages: #{packages}"
+          
             # origin, destination = upsified_location(origin), upsified_location(destination)
             # options = @options.merge(options)
             # packages = Array(packages)
