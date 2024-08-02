@@ -35,9 +35,10 @@ module Spree
         def retrieve_rates(origin, destination, shipment_packages)
           begin
             response = carrier.find_rates(origin, destination, shipment_packages, rate_options)
-            raise response.inspect
+            # raise response.inspect
             # turn this beastly array into a nice little hash
-            service_code_prefix_key = response.params.keys.first == 'IntlRateV2Response' ? :international : :domestic
+            # service_code_prefix_key = response.params.keys.first == 'IntlRateV2Response' ? :international : :domestic
+            service_code_prefix_key = :domestic
             rates = response.rates.collect do |rate|
               service_code = "#{SERVICE_CODE_PREFIX[service_code_prefix_key]}:#{rate.service_code}"
               [service_code, rate.price]
