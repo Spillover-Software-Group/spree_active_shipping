@@ -16,6 +16,7 @@ module Spree
 
           rates_result = retrieve_rates_from_cache(package, origin, destination)
 
+          raise "GUSTAVO CAMELLO".inspect
           return nil if rates_result.kind_of?(Spree::ShippingError)
           return nil if rates_result.empty?
           rate = rates_result[self.class.service_code]
@@ -24,7 +25,7 @@ module Spree
           rate = rate.to_f + (Spree::ActiveShipping::Config[:handling_fee].to_f || 0.0)
 
           # divide by 100 since active_shipping rates are expressed as cents
-          raise "GUSTAVO CAMELLO".inspect
+          
           return rate/100.0
         end
 
