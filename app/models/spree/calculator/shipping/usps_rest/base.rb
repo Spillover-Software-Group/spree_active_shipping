@@ -8,7 +8,6 @@ module Spree
         # }
 
         def compute_package(package)
-          raise "From here #{package}".inspect
           order = package.order
           stock_location = package.stock_location
 
