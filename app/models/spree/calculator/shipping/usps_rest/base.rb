@@ -24,7 +24,7 @@ module Spree
           rate = rate.to_f + (Spree::ActiveShipping::Config[:handling_fee].to_f || 0.0)
 
           # divide by 100 since active_shipping rates are expressed as cents
-          raise (rate/100.0).inspect
+          raise "GUSTAVO CAMELLO".inspect
           return rate/100.0
         end
 
