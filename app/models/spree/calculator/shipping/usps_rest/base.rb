@@ -7,25 +7,26 @@ module Spree
         #   domestic: 'dom'
         # }
 
-        # def compute_package(package)
-        #   order = package.order
-        #   stock_location = package.stock_location
+        def compute_package(package)
+          raise "From here #{package}".inspect
+          order = package.order
+          stock_location = package.stock_location
 
-        #   origin = build_location(stock_location)
-        #   destination = build_location(order.ship_address)
+          origin = build_location(stock_location)
+          destination = build_location(order.ship_address)
 
-        #   rates_result = retrieve_rates_from_cache(package, origin, destination)
+          rates_result = retrieve_rates_from_cache(package, origin, destination)
 
-        #   return nil if rates_result.kind_of?(Spree::ShippingError)
-        #   return nil if rates_result.empty?
-        #   rate = rates_result[self.class.service_code]
+          return nil if rates_result.kind_of?(Spree::ShippingError)
+          return nil if rates_result.empty?
+          rate = rates_result[self.class.service_code]
 
-        #   return nil unless rate
-        #   rate = rate.to_f + (Spree::ActiveShipping::Config[:handling_fee].to_f || 0.0)
+          return nil unless rate
+          rate = rate.to_f + (Spree::ActiveShipping::Config[:handling_fee].to_f || 0.0)
 
-        #   # divide by 100 since active_shipping rates are expressed as cents
-        #   return rate/100.0
-        # end
+          # divide by 100 since active_shipping rates are expressed as cents
+          return rate/100.0
+        end
 
         def carrier
           ::ActiveShipping::USPSRest.new(
