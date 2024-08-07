@@ -18,7 +18,7 @@ module Spree
           
           return nil if rates_result.kind_of?(Spree::ShippingError)
           return nil if rates_result.empty?
-          rate = rates_result[self.class.service_code]
+          rate = rates_result[self.class.description]
 
           raise "rates_result: #{rates_result} / rate: #{rate} and self: #{self} and class: #{self.class} class.service_code: #{self.class.service_code}".inspect
 
