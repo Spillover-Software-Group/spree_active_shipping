@@ -15,7 +15,6 @@ module Spree
           destination = build_location(order.ship_address)
 
           rates_result = retrieve_rates_from_cache(package, origin, destination)
-          raise "rates_result #{rates_result}".inspect
           
           return nil if rates_result.kind_of?(Spree::ShippingError)
           return nil if rates_result.empty?
