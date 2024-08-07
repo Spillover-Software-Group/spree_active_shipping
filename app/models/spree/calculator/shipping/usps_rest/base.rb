@@ -19,9 +19,8 @@ module Spree
           return nil if rates_result.kind_of?(Spree::ShippingError)
           return nil if rates_result.empty?
           rate = rates_result[self.class.service_code]
-          raise "rates_result: #{rates_result}".inspect
 
-          raise "rate: #{rate} and self: #{self} and class: #{self.class} class.service_code: #{self.class.service_code}".inspect
+          raise "rates_result: #{rates_result} / rate: #{rate} and self: #{self} and class: #{self.class} class.service_code: #{self.class.service_code}".inspect
 
           return nil unless rate
           rate = rate.to_f + (Spree::ActiveShipping::Config[:handling_fee].to_f || 0.0)
