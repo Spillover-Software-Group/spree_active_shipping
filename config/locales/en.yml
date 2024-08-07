@@ -72,6 +72,7 @@ en:
     first_class_mail_international_large_envelope: "USPS First-Class Mail International Large Envelope"
     first_class_package_international: "USPS First-Class Package International Service"
     first_class_mail_parcel: "USPS First-Class Mail Parcel"
+    ground_advantage: "USPS Ground Advantage"
     media_mail: "USPS Media Mail Parcel"
     standard_post: "USPS Standard Post"
     priority_mail: "USPS Priority Mail"

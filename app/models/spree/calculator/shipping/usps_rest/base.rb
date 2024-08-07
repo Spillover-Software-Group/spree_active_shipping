@@ -16,10 +16,12 @@ module Spree
 
           rates_result = retrieve_rates_from_cache(package, origin, destination)
 
-          raise "raise_result #{rates_result}".inspect
+          
           return nil if rates_result.kind_of?(Spree::ShippingError)
           return nil if rates_result.empty?
           rate = rates_result[self.class.service_code]
+
+          raise "rate: #{rate} and self: #{self} and class: #{self.class} class.service_code: #{self.class.service_code}".inspect
 
           return nil unless rate
           rate = rate.to_f + (Spree::ActiveShipping::Config[:handling_fee].to_f || 0.0)
