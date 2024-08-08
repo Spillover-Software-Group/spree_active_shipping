@@ -45,7 +45,7 @@ module Spree
             response = carrier.find_rates(origin, destination, shipment_packages)
             # turn this beastly array into a nice little hash
             rates = response.rates.collect do |rate|
-              next unless rate.service_code
+              next unless rate
 
               service_code = rate.service_code
               [service_code, rate.price]
