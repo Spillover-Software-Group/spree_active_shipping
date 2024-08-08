@@ -45,12 +45,12 @@ module Spree
             response = carrier.find_rates(origin, destination, shipment_packages)
             raise "Response: #{response.rates}".inspect
             # turn this beastly array into a nice little hash
-            service_code_prefix_key = response.params.keys.first == 'IntlRateV2Response' ? :international : :domestic
             rates = response.rates.collect do |rate|
-              service_code = "#{SERVICE_CODE_PREFIX[service_code_prefix_key]}:#{rate.service_code}"
+              service_code = rate.service_code
               [service_code, rate.price]
             end
             rate_hash = Hash[*rates.flatten]
+            raise "Rate_hash: #{rate_hash}".inspect
             return rate_hash
           rescue ::ActiveShipping::Error => e
 
