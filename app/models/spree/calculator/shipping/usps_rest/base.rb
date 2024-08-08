@@ -44,9 +44,8 @@ module Spree
           begin
             response = carrier.find_rates(origin, destination, shipment_packages)
             # turn this beastly array into a nice little hash
-            raise "Response: #{response.rates}".inspect
             rates = response.rates.collect do |rate|
-              raise "rate #{rate} / and #{rate["service_code"]}".inspect
+              raise "rate #{rate}}".inspect
               service_code = rate.service_code
               [service_code, rate.price]
             end
