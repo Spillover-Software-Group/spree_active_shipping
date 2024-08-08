@@ -1,7 +1,7 @@
 module Spree
   module Calculator::Shipping
     module UspsRest
-      class PriorityMail < Spree::Calculator::Shipping::UspsRest::Base
+      class FirstClassPackageService < Spree::Calculator::Shipping::UspsRest::Base
         def self.mail_class
           "FIRST-CLASS_PACKAGE_SERVICE"
         end
