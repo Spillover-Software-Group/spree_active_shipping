@@ -2,12 +2,8 @@ module Spree
   module Calculator::Shipping
     module UspsRest
       class GroundAdvantage < Spree::Calculator::Shipping::UspsRest::Base
-        def self.geo_group
-          :domestic
-        end
-
-        def self.service_code
-          "#{SERVICE_CODE_PREFIX[geo_group]}:30" #USPS Ground Advantage
+        def self.mail_class
+          "USPS_GROUND_ADVANTAGE"
         end
 
         def self.description

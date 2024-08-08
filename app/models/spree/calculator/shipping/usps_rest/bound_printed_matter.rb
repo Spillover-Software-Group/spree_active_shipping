@@ -1,13 +1,13 @@
 module Spree
   module Calculator::Shipping
     module UspsRest
-      class PriorityMail < Spree::Calculator::Shipping::UspsRest::Base
+      class BoundPrintedMatter < Spree::Calculator::Shipping::UspsRest::Base
         def self.mail_class
-          "PRIORITY_MAIL"
+          "BOUND_PRINTED_MATTER"
         end
 
         def self.description
-          I18n.t("usps_rest.priority_mail")
+          I18n.t("usps_rest.bound_printed_matter")
         end
       end
     end

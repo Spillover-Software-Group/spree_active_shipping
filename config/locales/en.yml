@@ -66,25 +66,21 @@ en:
     priority_mail_international_large_flat_rate_box: "Legacy USPS Priority Mail International Large Flat Rate Box"
     global_express_guaranteed: "Legacy USPS Global Express Guaranteed (GXG)"
   usps_rest:
-    express_mail: "USPS Priority Mail Express"
-    express_mail_international: "USPS Priority Mail Express International"
-    first_class_mail_international: "USPS First-Class Mail International Letter"
-    first_class_mail_international_large_envelope: "USPS First-Class Mail International Large Envelope"
-    first_class_package_international: "USPS First-Class Package International Service"
-    first_class_mail_parcel: "USPS First-Class Mail Parcel"
-    ground_advantage: "USPS Ground Advantage"
-    media_mail: "USPS Media Mail Parcel"
-    standard_post: "USPS Standard Post"
-    priority_mail: "USPS Priority Mail"
-    priority_mail_small_flat_rate_box: "USPS Priority Mail Small Flat Rate Box"
-    priority_mail_medium_flat_rate_box: "USPS Priority Mail Medium Flat Rate Box"
-    priority_mail_large_flat_rate_box: "USPS Priority Mail Large Flat Rate Box"
-    priority_mail_flat_rate_envelope: "USPS Priority Mail Flat Rate Envelope"
-    priority_mail_international: "USPS Priority Mail International"
-    priority_mail_international_small_flat_rate_box: "USPS Priority Mail International Small Flat Rate Box"
-    priority_mail_international_medium_flat_rate_box: "USPS Priority Mail International Medium Flat Rate Box"
-    priority_mail_international_large_flat_rate_box: "USPS Priority Mail International Large Flat Rate Box"
-    global_express_guaranteed: "USPS Global Express Guaranteed (GXG)"
+    parcel_select: USPS Parcel Select
+    parcel_select_lightweight: USPS Parcel Select Lightweight
+    priority_mail_express: USPS Priority Mail Express
+    priority_mail: USPS Priority Mail
+    first_class_package_service: USPS First Class Package Service
+    library_mail: USPS Library Mail
+    media_mail: USPS Media Mail
+    bound_printed_matter: USPS Bound Printed Matter
+    connect_local: USPS Connect Local
+    connect_mail: USPS Connect Mail
+    connect_next_day: USPS Connect Next Day
+    connect_regional: USPS Connect Regional
+    connect_same_day: USPS Connect Same Day
+    retail_ground: USPS Retail Ground
+    ground_advantage: USPS Ground Advantage
   canada_post:
     regular: "Canada Post Regular"
     expedited: "Canada Post Expedited"

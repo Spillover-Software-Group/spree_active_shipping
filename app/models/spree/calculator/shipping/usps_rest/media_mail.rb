@@ -2,12 +2,8 @@ module Spree
   module Calculator::Shipping
     module UspsRest
       class MediaMail < Spree::Calculator::Shipping::UspsRest::Base
-        def self.geo_group
-          :domestic
-        end
-
-        def self.service_code
-          "#{SERVICE_CODE_PREFIX[geo_group]}:6" #Media Mail®
+        def self.mail_class
+          "MEDIA_MAIL"
         end
 
         def self.description

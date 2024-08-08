@@ -1,13 +1,13 @@
 module Spree
   module Calculator::Shipping
     module UspsRest
-      class PriorityMail < Spree::Calculator::Shipping::UspsRest::Base
+      class RetailGround < Spree::Calculator::Shipping::UspsRest::Base
         def self.mail_class
-          "PRIORITY_MAIL"
+          "USPS_RETAIL_GROUND"
         end
 
         def self.description
-          I18n.t("usps_rest.priority_mail")
+          I18n.t("usps_rest.retail_ground")
         end
       end
     end

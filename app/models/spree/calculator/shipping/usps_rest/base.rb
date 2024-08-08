@@ -16,13 +16,12 @@ module Spree
 
           rates_result = retrieve_rates_from_cache(package, origin, destination)
 
-          raise "rates_result #{rates_result}".inspect
           return nil if rates_result.kind_of?(Spree::ShippingError)
           return nil if rates_result.empty?
           # rate = rates_result[self.class.service_code]
-          rate = rates_result[self.class.description]
+          rate = rates_result[self.class.mail_class]
 
-          # raise "rates_result: #{rates_result} / rate: #{rate} and self: #{self} and class: #{self.class} class.service_code: #{self.class.service_code}".inspect
+          raise "rates_result: #{rates_result} / rate: #{rate} and self: #{self} and class: #{self.class} class.service_code: #{self.class.mail_class}".inspect
 
           return nil unless rate
           rate = rate.to_f + (Spree::ActiveShipping::Config[:handling_fee].to_f || 0.0)
@@ -51,7 +50,6 @@ module Spree
               [service_code, rate.price]
             end
             rate_hash = Hash[*rates.flatten]
-            raise "Rate_hash: #{rate_hash}".inspect
             return rate_hash
           rescue ::ActiveShipping::Error => e
 
