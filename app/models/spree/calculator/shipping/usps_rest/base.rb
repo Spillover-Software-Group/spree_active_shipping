@@ -25,7 +25,6 @@ module Spree
           rate = rate.to_f + (Spree::ActiveShipping::Config[:handling_fee].to_f || 0.0)
 
           # divide by 100 since active_shipping rates are expressed as cents
-          
           return rate/100.0
         end
 
@@ -41,7 +40,6 @@ module Spree
           begin
             response = carrier.find_rates(origin, destination, shipment_packages)
             # turn this beastly array into a nice little hash
-
             rates = response.rates.collect do |rate|
               next unless rate
 
