@@ -41,6 +41,8 @@ module Spree
           begin
             response = carrier.find_rates(origin, destination, shipment_packages)
             # turn this beastly array into a nice little hash
+
+            raise "the rates #{response.rates}".inspect
             rates = response.rates.collect do |rate|
               next unless rate
 
