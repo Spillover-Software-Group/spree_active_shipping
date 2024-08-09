@@ -42,7 +42,6 @@ module Spree
             response = carrier.find_rates(origin, destination, shipment_packages)
             # turn this beastly array into a nice little hash
 
-            raise "the rates #{response} and #{response.rates}".inspect
             rates = response.rates.collect do |rate|
               next unless rate
 
@@ -53,7 +52,6 @@ module Spree
             return rate_hash
           rescue ::ActiveShipping::Error => e
 
-            return nil
             if e.class == ::ActiveShipping::ResponseError && e.response.is_a?(::ActiveShipping::Response)
               params = e.response.params
               if params.has_key?("Response") && params["Response"].has_key?("Error") && params["Response"]["Error"].has_key?("ErrorDescription")
