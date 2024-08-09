@@ -53,6 +53,7 @@ module Spree
             return rate_hash
           rescue ::ActiveShipping::Error => e
 
+            return nil
             if e.class == ::ActiveShipping::ResponseError && e.response.is_a?(::ActiveShipping::Response)
               params = e.response.params
               if params.has_key?("Response") && params["Response"].has_key?("Error") && params["Response"]["Error"].has_key?("ErrorDescription")
