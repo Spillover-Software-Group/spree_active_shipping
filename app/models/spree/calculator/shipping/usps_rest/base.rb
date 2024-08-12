@@ -37,6 +37,7 @@ module Spree
         end
 
         def retrieve_rates(origin, destination, shipment_packages)
+          raise "the shipment pakcage #{shipment_packages}".inspect
           begin
             response = carrier.find_rates(origin, destination, shipment_packages)
             # turn this beastly array into a nice little hash
