@@ -21,10 +21,7 @@ class Spree::ActiveShippingConfiguration < Spree::Preferences::Configuration
 
   preference :usps_client_id, :string, default: "your_usps_client_id"
   preference :usps_client_secret, :string, default: "your_usps_client_secret"
-  preference :usps_customer_registration_id, :string, default: nil
-  preference :usps_mailer_id, :string, default: nil
   preference :usps_access_token, :string, default: nil
-  preference :usps_refresh_token, :string, default: nil
 
   preference :canada_post_login, :string, default: "canada_post_login"
 
