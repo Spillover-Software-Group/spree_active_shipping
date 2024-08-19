@@ -23,6 +23,9 @@ class Spree::ActiveShippingConfiguration < Spree::Preferences::Configuration
   preference :usps_client_secret, :string, default: "your_usps_client_secret"
   preference :usps_access_token, :string, default: nil
 
+  preference :usps_shipstation_api_key, :string, default: nil
+  preference :usps_shipstation_api_secret, :string, default: nil
+
   preference :canada_post_login, :string, default: "canada_post_login"
 
   preference :australia_post_login, :string, default: "australia_post_api_key"
