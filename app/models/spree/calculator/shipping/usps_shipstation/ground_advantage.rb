@@ -1,7 +1,7 @@
 module Spree
   module Calculator::Shipping
-    module USPSShipstation
-      class GroundAdvantage < Spree::Calculator::Shipping::USPSShipstation::Base
+    module UspsShipstation
+      class GroundAdvantage < Spree::Calculator::Shipping::UspsShipstation::Base
         def self.mail_class
           "USPS_GROUND_ADVANTAGE"
         end
