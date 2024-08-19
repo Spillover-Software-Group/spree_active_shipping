@@ -81,6 +81,8 @@ en:
     connect_same_day: USPS Connect Same Day
     retail_ground: USPS Retail Ground
     ground_advantage: USPS Ground Advantage
+  usps_shipstation:
+    ground_advantage: USPS Ground Advantage
   canada_post:
     regular: "Canada Post Regular"
     expedited: "Canada Post Expedited"
