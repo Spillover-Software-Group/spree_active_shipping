@@ -34,6 +34,7 @@ module Spree
   
         def retrieve_rates(origin, destination, shipment_packages)
           begin
+            raise "the Carrier #{carrier}".inspect
             response = carrier.find_rates(origin, destination, shipment_packages)
 
             
