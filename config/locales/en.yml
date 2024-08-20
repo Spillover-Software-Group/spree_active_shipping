@@ -82,7 +82,23 @@ en:
     retail_ground: USPS Retail Ground
     ground_advantage: USPS Ground Advantage
   usps_shipstation:
+    first_class_mail_large_envelope: USPS First Class Mail Large Envelope or Flat - ShipStation
+    first_class_mail_letter: USPS First Class Mail Letter - ShipStation
+    first_class_mail_package: USPS First Class Mail Package - ShipStation
     ground_advantage: USPS Ground Advantage - ShipStation
+    media_mail_package: USPS Media Mail Package - ShipStation
+    parcel_select: USPS Parcel Select Ground Package - ShipStation
+    priority_mail_envelope_flat: USPS Priority Mail Flat Rate Envelope - ShipStation
+    priority_mail_express_flat_envelope: USPS Priority Mail Express Flat Rate Envelope - ShipStation
+    priority_mail_express_legal_flat: USPS Priority Mail Express Legal Flat Rate Envelope - ShipStation
+    priority_mail_express_package: USPS Priority Mail Express Package - ShipStation
+    priority_mail_express_padded_envelope: USPS Priority Mail Express Flat Rate Padded Envelope - ShipStation
+    priority_mail_large_flat: USPS Priority Mail Large Flat Rate Box - ShipStation
+    priority_mail_legal_flat: USPS Priority Mail Legal Flat Rate Envelope - ShipStation
+    priority_mail_medium_flat: USPS Priority Mail Medium Flat Rate Box - ShipStation
+    priority_mail_package: USPS Priority Mail Package - ShipStation
+    priority_mail_padded_envelope: USPS Priority Mail Flat Rate Padded Envelope - ShipStation
+    priority_mail_small_flat: USPS Priority Mail Small Flat Rate Box - ShipStation
   canada_post:
     regular: "Canada Post Regular"
     expedited: "Canada Post Expedited"
