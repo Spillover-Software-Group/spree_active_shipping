@@ -39,7 +39,7 @@ module Spree
             
             # turn this beastly array into a nice little hash
             rates = response.rates.collect do |rate|
-              raise "THE RATES #{rate} and rate service #{rate.service_code}.inspect"
+              raise "THE RATES #{rate} and rate service #{rate.service_code} and #{rate.price}".inspect
               next unless rate
   
               service_code = rate.service_code
