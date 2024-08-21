@@ -46,6 +46,14 @@ en:
     worldwide_expedited: "UPS Worldwide Expedited"
     standard: "UPS Standard"
     express: "UPS Express"
+  ups_shipstation:
+    ground: "UPS Ground - ShipStation"
+    ground_saver: "UPS Ground Saver - ShipStation"
+    next_day_air: "UPS Next Day Air - ShipStation"
+    next_day_air_early: "UPS Next Day Air Early - ShipStation"
+    next_day_air_saver: "UPS Next Day Air Saver - ShipStation"
+    second_day_air: "UPS 2nd Day Air - ShipStation"
+    third_day_select: "UPS 3 Day Select - ShipStation"
   usps:
     express_mail: "Legacy USPS Priority Mail Express"
     express_mail_international: "Legacy USPS Priority Mail Express International"
