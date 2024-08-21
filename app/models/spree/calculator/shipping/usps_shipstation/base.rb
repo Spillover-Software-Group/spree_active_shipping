@@ -25,8 +25,8 @@ module Spree
   
         def carrier
           ::ActiveShipping::USPSShipstation.new(
-            api_key: Spree::ActiveShipping::Config[:usps_shipstation_api_key],
-            api_secret: Spree::ActiveShipping::Config[:usps_shipstation_api_secret],
+            api_key: Spree::ActiveShipping::Config[:shipstation_api_key],
+            api_secret: Spree::ActiveShipping::Config[:shipstation_api_secret],
           )
         end
   
