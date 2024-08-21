@@ -1,7 +1,7 @@
 module Spree
   module Calculator::Shipping
     module UpsShipstation
-      class NextDaySaver < Spree::Calculator::Shipping::UpsShipstation::Base
+      class NextDayAirSaver < Spree::Calculator::Shipping::UpsShipstation::Base
         def self.mail_class
           "UPS_NEXT_DAY_AIR_SAVER"
         end
