@@ -29,11 +29,15 @@ module Spree
         end
 
         def carrier
-          ::ActiveShipping::USPSRest.new(
-            client_id: Spree::ActiveShipping::Config[:usps_client_id],
-            client_secret: Spree::ActiveShipping::Config[:usps_client_secret],
-            access_token: Spree::ActiveShipping::Config[:usps_access_token],
-          )
+          client_id = Spree::ActiveShipping::Config[:usps_client_id].presence
+          client_secret = Spree::ActiveShipping::Config[:usps_client_secret].presence
+
+          unless client_id && client_secret
+            client_id = ENV['USPS_CLIENT_ID']
+            client_secret = ENV['USPS_CLIENT_SECRET']
+          end
+
+          ::ActiveShipping::USPSRest.new(client_id:, client_secret:)
         end
 
         def retrieve_rates(origin, destination, shipment_packages)

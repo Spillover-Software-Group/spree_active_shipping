@@ -8,7 +8,7 @@ module Spree
   
           origin = build_location(stock_location)
           destination = build_location(order.ship_address)
-  
+
           rates_result = retrieve_rates_from_cache(package, origin, destination)
   
           return nil if rates_result.kind_of?(Spree::ShippingError)
@@ -24,10 +24,15 @@ module Spree
         end
   
         def carrier
-          ::ActiveShipping::USPSShipstation.new(
-            api_key: Spree::ActiveShipping::Config[:shipstation_api_key],
-            api_secret: Spree::ActiveShipping::Config[:shipstation_api_secret],
-          )
+          api_key = Spree::ActiveShipping::Config[:shipstation_api_key].presence
+          api_secret = Spree::ActiveShipping::Config[:shipstation_api_secret].presence
+
+          unless api_key && api_secret
+            api_key = ENV['SHIPSTATION_API_KEY']
+            api_secret = ENV['SHIPSTATION_API_SECRET']
+          end
+
+          ::ActiveShipping::UPSShipstation.new(api_key:, api_secret:)
         end
   
         def retrieve_rates(origin, destination, shipment_packages)
