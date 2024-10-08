@@ -250,7 +250,7 @@ module Spree
           Rails.logger.info(packages.inspect)
 
           new_packages = packages.reject do |package|
-            package.inches(:height) == 0.0 && package.inches(:height) == 0.0 && package.inches(:height) == 0.0
+            package.inches(:height) == 0.0 && package.inches(:width) == 0.0 && package.inches(:length) == 0.0
           end
 
           raise "#{packages} and count #{packages.count} //// #{new_packages} and count #{new_packages.count}".inspect
