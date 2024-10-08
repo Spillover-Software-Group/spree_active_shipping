@@ -188,8 +188,10 @@ module Spree
             quantity = content_item.quantity
             product  = variant.product
 
+            
             product.product_packages.each do |product_package|
               if product_package.weight.to_f <= max_weight or max_weight == 0
+                raise "FROM INSIDE THE LOOP".inspect
                 quantity.times do
                   packages << [product_package.weight * multiplier, product_package&.length || variant&.length, product_package.width || variant&.width, product_package.height || variant&.height]
                 end
@@ -199,6 +201,7 @@ module Spree
             end
           end
 
+          raise "package.contents #{package&.contents} and count #{package&.contents&.count} ////// #{product&.product_packages} and /// packages = #{packages}".inspect
           packages
         end
 
