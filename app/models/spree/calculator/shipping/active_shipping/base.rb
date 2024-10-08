@@ -201,7 +201,7 @@ module Spree
             end
           end
 
-          raise "package.contents #{package&.contents} and count #{package&.contents&.count} ////// #{product&.product_packages} and /// packages = #{packages}".inspect
+          raise "package.contents #{package&.contents} and count #{package&.contents&.count} ////// and /// packages = #{packages}".inspect
           packages
         end
 
