@@ -244,7 +244,7 @@ module Spree
           end
 
           item_specific_packages.each do |package|
-            packages << ::ActiveShipping::Package.new(package.at(0), [package.at(1), package.at(2), package.at(3)], units: :imperial)
+            packages << ::ActiveShipping::Package.new(package.at(0), [package.at(1), package.at(2), package.at(3)], units: :units)
           end
 
           Rails.logger.info(packages.inspect)
@@ -300,6 +300,7 @@ module Spree
         def retrieve_rates_from_cache package, origin, destination
           Rails.cache.fetch(cache_key(package)) do
             shipment_packages = packages(package)
+            raise "the shipment_packages = #{shipment_packages}".inspect
             if shipment_packages.empty?
               {}
             else
