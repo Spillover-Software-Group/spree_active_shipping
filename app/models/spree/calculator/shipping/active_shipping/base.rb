@@ -300,7 +300,7 @@ module Spree
         def retrieve_rates_from_cache package, origin, destination
           Rails.cache.fetch(cache_key(package)) do
             shipment_packages = packages(package)
-            raise "#{shipment_packages[0].inches(:height)} and #{shipment_packages[1].inches(:width)} and #{shipment_packages[2].inches(:length)} and ".inspect
+            raise "#{shipment_packages[0].inches(:height)} and #{shipment_packages[1].inches(:width)} and #{shipment_packages[1].inches(:length)} and ".inspect
             if shipment_packages.empty?
               {}
             else
