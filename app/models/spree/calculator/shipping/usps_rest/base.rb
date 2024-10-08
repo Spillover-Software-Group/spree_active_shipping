@@ -41,7 +41,6 @@ module Spree
         end
 
         def retrieve_rates(origin, destination, shipment_packages)
-          raise "#{shipment_packages} and the count #{shipment_packages.count} and test this == #{Array(shipment_packages)[0].inches(:width).to_f}".inspect
           # begin
             response = carrier.find_rates(origin, destination, shipment_packages)
             # turn this beastly array into a nice little hash
