@@ -250,8 +250,8 @@ module Spree
           Rails.logger.info(packages.inspect)
 
           new_packages = packages.reject do |package|
-            raise "test = #{package.inches(:height) == nil} and test #{package.inches(:height)}".inspect
-            package.inches(:height) == nil && package.inches(:height) == nil && package.inches(:height) == nil
+            raise "test = #{package.inches(:height) == 0.0} and test #{package.inches(:height)} ////////// #{            package.inches(:height) == 0.0 && package.inches(:height) == 0.0 && package.inches(:height) == 0.0}".inspect
+            package.inches(:height) == 0.0 && package.inches(:height) == 0.0 && package.inches(:height) == 0.0
           end
 
           raise "#{packages} and count #{packages.count}".inspect
