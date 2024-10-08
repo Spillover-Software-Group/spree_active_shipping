@@ -229,6 +229,7 @@ module Spree
           item_specific_packages = convert_package_to_item_packages_array(package)
 
           if max_weight <= 0
+            raise "from AAAAA".inspect
             packages << ::ActiveShipping::Package.new(weights.sum, dimensions, units: units)
           else
             package_weight = 0
@@ -236,10 +237,12 @@ module Spree
               if package_weight + content_weight <= max_weight
                 package_weight += content_weight
               else
+                raise "from BBBBB".inspect
                 packages << ::ActiveShipping::Package.new(package_weight, dimensions, units: units)
                 package_weight = content_weight
               end
             end
+            raise "from CCCCC".inspect
             packages << ::ActiveShipping::Package.new(package_weight, dimensions, units: units) if package_weight > 0
           end
 
