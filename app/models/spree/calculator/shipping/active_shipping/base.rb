@@ -188,15 +188,19 @@ module Spree
             quantity = content_item.quantity
             product  = variant.product
 
-            
-            product.product_packages.each do |product_package|
-              if product_package.weight.to_f <= max_weight or max_weight == 0
-                raise "FROM INSIDE THE LOOP".inspect
-                quantity.times do
-                  packages << [product_package.weight * multiplier, product_package&.length || variant&.length, product_package.width || variant&.width, product_package.height || variant&.height]
+            if product.product_packages.any?
+              product.product_packages.each do |product_package|
+                if product_package.weight.to_f <= max_weight or max_weight == 0
+                  quantity.times do
+                    packages << [product_package.weight * multiplier, product_package&.length, product_package.width, product_package.height]
+                  end
+                else
+                  raise Spree::ShippingError.new("#{I18n.t(:shipping_error)}: The maximum per package weight for the selected service from the selected country is #{max_weight} ounces.")
                 end
-              else
-                raise Spree::ShippingError.new("#{I18n.t(:shipping_error)}: The maximum per package weight for the selected service from the selected country is #{max_weight} ounces.")
+              end
+            else
+              quantity.times do
+                packages << [product_package.weight * multiplier, variant&.length, variant.width, variant.height]
               end
             end
           end
