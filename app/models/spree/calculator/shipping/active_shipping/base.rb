@@ -200,7 +200,7 @@ module Spree
               end
             else
               quantity.times do
-                packages << [variant.weight * multiplier, variant&.depth, variant&.width, variant&.height]
+                packages << [variant.weight * multiplier, variant&.depth&.to_f, variant&.width&.to_f, variant&.height&.to_f]
               end
             end
           end
@@ -244,13 +244,12 @@ module Spree
           end
 
           item_specific_packages.each do |package|
-            raise "the package =#{package} and test package.at(0) = #{package.at(0)} //// package.at(1) = #{package.at(1)}".inspect
             packages << ::ActiveShipping::Package.new(package.at(0), [package.at(1), package.at(2), package.at(3)], units: :imperial)
           end
 
           Rails.logger.info(packages.inspect)
 
-          raise packages.inspect
+          packages
         end
 
         def get_max_weight(package)
