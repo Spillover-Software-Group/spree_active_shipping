@@ -244,6 +244,7 @@ module Spree
           end
 
           item_specific_packages.each do |package|
+            raise "the package =#{package} and test package.at(0) = #{package.at(0)} //// package.at(1) = #{package.at(1)}".inspect
             packages << ::ActiveShipping::Package.new(package.at(0), [package.at(1), package.at(2), package.at(3)], units: :imperial)
           end
 
