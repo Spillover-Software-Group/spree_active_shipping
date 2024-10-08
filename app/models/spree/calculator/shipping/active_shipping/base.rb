@@ -191,7 +191,7 @@ module Spree
             product.product_packages.each do |product_package|
               if product_package.weight.to_f <= max_weight or max_weight == 0
                 quantity.times do
-                  packages << [product_package.weight * multiplier, product_package.length, product_package.width, product_package.height]
+                  packages << [product_package.weight * multiplier, product_package&.length || variant&.length, product_package.width || variant&.width, product_package.height || variant&.height]
                 end
               else
                 raise Spree::ShippingError.new("#{I18n.t(:shipping_error)}: The maximum per package weight for the selected service from the selected country is #{max_weight} ounces.")
@@ -222,8 +222,6 @@ module Spree
           max_weight = get_max_weight(package)
           dimensions = convert_package_to_dimensions_array(package)
           item_specific_packages = convert_package_to_item_packages_array(package)
-
-          raise "the dimensions #{dimensions} and item_specific_packages #{item_specific_packages}".inspect
 
           if max_weight <= 0
             packages << ::ActiveShipping::Package.new(weights.sum, dimensions, units: units)
