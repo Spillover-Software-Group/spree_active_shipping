@@ -200,7 +200,7 @@ module Spree
               end
             else
               quantity.times do
-                packages << [variant.weight * multiplier, variant&.depth&.to_f, variant&.width&.to_f, variant&.height&.to_f]
+                packages << [variant.weight * multiplier, variant&.depth || 0, variant&.width, variant&.height]
               end
             end
           end
@@ -300,7 +300,7 @@ module Spree
         def retrieve_rates_from_cache package, origin, destination
           Rails.cache.fetch(cache_key(package)) do
             shipment_packages = packages(package)
-            raise "the shipment_packages = #{shipment_packages}".inspect
+            raise "the shipment_packages = #{shipment_packages} and #{shipment_packages.inches(:height)}".inspect
             if shipment_packages.empty?
               {}
             else
