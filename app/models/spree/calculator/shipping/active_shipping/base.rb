@@ -251,7 +251,6 @@ module Spree
 
           # Spree is adding an extra package with no dimensions
           new_packages = packages.reject do |package|
-            # package.inches(:height) == 0.0 && package.inches(:width) == 0.0 && package.inches(:length) == 0.0
             %i[height width length].all? { |dimension| package.inches(dimension) == 0.0 }
           end
 
