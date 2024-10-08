@@ -200,7 +200,7 @@ module Spree
               end
             else
               quantity.times do
-                packages << [product_package.weight * multiplier, variant&.length, variant.width, variant.height]
+                packages << [variant.weight * multiplier, variant&.length, variant.width, variant.height]
               end
             end
           end
