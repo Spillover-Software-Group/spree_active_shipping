@@ -188,13 +188,19 @@ module Spree
             quantity = content_item.quantity
             product  = variant.product
 
-            product.product_packages.each do |product_package|
-              if product_package.weight.to_f <= max_weight or max_weight == 0
-                quantity.times do
-                  packages << [product_package.weight * multiplier, product_package.length, product_package.width, product_package.height]
+            if product.product_packages.any?
+              product.product_packages.each do |product_package|
+                if product_package.weight.to_f <= max_weight or max_weight == 0
+                  quantity.times do
+                    packages << [product_package.weight * multiplier, product_package&.length, product_package.width, product_package.height]
+                  end
+                else
+                  raise Spree::ShippingError.new("#{I18n.t(:shipping_error)}: The maximum per package weight for the selected service from the selected country is #{max_weight} ounces.")
                 end
-              else
-                raise Spree::ShippingError.new("#{I18n.t(:shipping_error)}: The maximum per package weight for the selected service from the selected country is #{max_weight} ounces.")
+              end
+            else
+              quantity.times do
+                packages << [variant.weight * multiplier, variant&.depth || 0, variant&.width, variant&.height]
               end
             end
           end
@@ -238,12 +244,17 @@ module Spree
           end
 
           item_specific_packages.each do |package|
-            packages << ::ActiveShipping::Package.new(package.at(0), [package.at(1), package.at(2), package.at(3)], units: :imperial)
+            packages << ::ActiveShipping::Package.new(package.at(0), [package.at(1), package.at(2), package.at(3)], units: :units)
           end
 
           Rails.logger.info(packages.inspect)
 
-          packages
+          # Spree is adding an extra package with no dimensions
+          new_packages = packages.reject do |package|
+            %i[height width length].all? { |dimension| package.inches(dimension) == 0.0 }
+          end
+
+          new_packages
         end
 
         def get_max_weight(package)
