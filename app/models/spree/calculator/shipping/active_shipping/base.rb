@@ -243,6 +243,8 @@ module Spree
             packages << ::ActiveShipping::Package.new(package_weight, dimensions, units: units) if package_weight > 0
           end
 
+          raise "item_specific_packages = #{item_specific_packages} and count #{item_specific_packages&.count}".inspect
+
           item_specific_packages.each do |package|
             packages << ::ActiveShipping::Package.new(package.at(0), [package.at(1), package.at(2), package.at(3)], units: :units)
           end
