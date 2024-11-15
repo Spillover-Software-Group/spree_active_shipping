@@ -257,7 +257,7 @@ module Spree
           end
 
           raise "convert_package_to_weights_array = #{weights} ad the count #{weights.count} ////////
-            PACAKGE CONTENTS = #{package.contents} and count #{package&.contents&.count} //////// and  max weight #{max_weight} ////
+            packages = #{packages?.count} //////
             new packages total count #{new_packages.count}".inspect
           new_packages
         end
