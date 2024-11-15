@@ -228,6 +228,9 @@ module Spree
           dimensions = convert_package_to_dimensions_array(package)
           item_specific_packages = convert_package_to_item_packages_array(package)
 
+          raise "convert_package_to_weights_array = #{weights} ad the count #{weights.count} ////////
+            PACAKGE CONTENTS = #{package.contents} and count #{package&.contents&.count} //////// and  max weight #{max_weight}".inspect
+
           if max_weight <= 0
             packages << ::ActiveShipping::Package.new(weights.sum, dimensions, units: units)
           else
@@ -305,7 +308,6 @@ module Spree
 
         def retrieve_rates_from_cache package, origin, destination
           Rails.cache.fetch(cache_key(package)) do
-            raise "THE PACKAGE OBJECT = #{package}".inspect
             shipment_packages = packages(package)
             if shipment_packages.empty?
               {}
