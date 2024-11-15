@@ -254,6 +254,7 @@ module Spree
             %i[height width length].all? { |dimension| package.inches(dimension) == 0.0 }
           end
 
+          raise "THE NEW PACKAGES FROM spree_active_shipping = #{new_packages}".inspect
           new_packages
         end
 
