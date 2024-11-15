@@ -305,7 +305,7 @@ module Spree
 
         def retrieve_rates_from_cache package, origin, destination
           Rails.cache.fetch(cache_key(package)) do
-            raise "THE PACKAGE OBJECT = #{package} and #{package.count}".inspect
+            raise "THE PACKAGE OBJECT = #{package}".inspect
             shipment_packages = packages(package)
             if shipment_packages.empty?
               {}
