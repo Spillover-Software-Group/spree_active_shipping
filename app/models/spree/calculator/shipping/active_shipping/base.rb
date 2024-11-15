@@ -243,11 +243,11 @@ module Spree
             packages << ::ActiveShipping::Package.new(package_weight, dimensions, units: units) if package_weight > 0
           end
 
-          raise "item_specific_packages = #{item_specific_packages} and count #{item_specific_packages&.count}".inspect
+          # raise "item_specific_packages = #{item_specific_packages} and count #{item_specific_packages&.count}".inspect
 
-          item_specific_packages.each do |package|
-            packages << ::ActiveShipping::Package.new(package.at(0), [package.at(1), package.at(2), package.at(3)], units: :units)
-          end
+          # item_specific_packages.each do |package|
+          #   packages << ::ActiveShipping::Package.new(package.at(0), [package.at(1), package.at(2), package.at(3)], units: :units)
+          # end
 
           Rails.logger.info(packages.inspect)
 
@@ -256,9 +256,9 @@ module Spree
             %i[height width length].all? { |dimension| package.inches(dimension) == 0.0 }
           end
 
-          raise "convert_package_to_weights_array = #{weights} ad the count #{weights.count} ////////
-            PACAKGE CONTENTS = #{package.contents} and count #{package&.contents&.count} //////// and  max weight #{max_weight} ////
-            new packages total count #{new_packages.count}".inspect
+          # raise "convert_package_to_weights_array = #{weights} ad the count #{weights.count} ////////
+          #   PACAKGE CONTENTS = #{package.contents} and count #{package&.contents&.count} //////// and  max weight #{max_weight} ////
+          #   new packages total count #{new_packages.count}".inspect
           new_packages
         end
 
