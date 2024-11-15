@@ -252,9 +252,9 @@ module Spree
           Rails.logger.info(packages.inspect)
 
           # Spree is adding an extra package with no dimensions
-          new_packages = packages.reject do |package|
-            %i[height width length].all? { |dimension| package.inches(dimension) == 0.0 }
-          end
+          # new_packages = packages.reject do |package|
+          #   %i[height width length].all? { |dimension| package.inches(dimension) == 0.0 }
+          # end
 
           raise "convert_package_to_weights_array = #{weights} ad the count #{weights.count} ////////
             packages = #{packages&.count} //////
