@@ -254,7 +254,7 @@ module Spree
             %i[height width length].all? { |dimension| package.inches(dimension) == 0.0 }
           end
 
-          raise "THE NEW PACKAGES FROM spree_active_shipping = #{new_packages}".inspect
+          raise "THE NEW PACKAGES FROM spree_active_shipping = #{new_packages}.count".inspect
           new_packages
         end
 
@@ -305,6 +305,7 @@ module Spree
 
         def retrieve_rates_from_cache package, origin, destination
           Rails.cache.fetch(cache_key(package)) do
+            raise "THE PACKAGE OBJECT = #{package} and #{package.count}".inspect
             shipment_packages = packages(package)
             if shipment_packages.empty?
               {}
