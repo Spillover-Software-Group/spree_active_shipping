@@ -223,27 +223,7 @@ module Spree
         def packages(package)
           units = Spree::ActiveShipping::Config[:units].to_sym
           packages = []
-          weights = convert_package_to_weights_array(package)
-          max_weight = get_max_weight(package)
-          dimensions = convert_package_to_dimensions_array(package)
           item_specific_packages = convert_package_to_item_packages_array(package)
-
-          # if max_weight <= 0
-          #   packages << ::ActiveShipping::Package.new(weights.sum, dimensions, units: units)
-          # else
-          #   package_weight = 0
-          #   weights.each do |content_weight|
-          #     if package_weight + content_weight <= max_weight
-          #       package_weight += content_weight
-          #     else
-          #       packages << ::ActiveShipping::Package.new(package_weight, dimensions, units: units)
-          #       package_weight = content_weight
-          #     end
-          #   end
-          #   packages << ::ActiveShipping::Package.new(package_weight, dimensions, units: units) if package_weight > 0
-          # end
-
-          # raise "item_specific_packages = #{item_specific_packages} and count #{item_specific_packages&.count}".inspect
 
           item_specific_packages.each do |package|
             packages << ::ActiveShipping::Package.new(package.at(0), [package.at(1), package.at(2), package.at(3)], units: :units)
@@ -256,9 +236,6 @@ module Spree
             %i[height width length].all? { |dimension| package.inches(dimension) == 0.0 }
           end
 
-          # raise "convert_package_to_weights_array = #{weights} ad the count #{weights.count} ////////
-          #   packages = #{packages&.count} //////
-          #   new packages total count #{new_packages.count}".inspect
           new_packages
         end
 
