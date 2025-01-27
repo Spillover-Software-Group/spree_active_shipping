@@ -3,20 +3,32 @@
     <div data-hook="length" class="field">
       <%= f.label Spree.t(:length) %><br>
       <%= f.text_field :length, class: "form-control" %>
+      <p class="font-italic small-font-size mt-1">
+        The value is in inches
+      </p>
     </div>
     <div data-hook="width" class="field">
       <%= f.label Spree.t(:width) %><br>
       <%= f.text_field :width, class: "form-control" %>
+      <p class="font-italic small-font-size mt-1">
+        The value is in inches
+      </p>
     </div>
   </div>
   <div class="col-md-6">
     <div data-hook="height" class="field">
       <%= f.label Spree.t(:height) %><br>
       <%= f.text_field :height, class: "form-control" %>
+      <p class="font-italic small-font-size mt-1">
+        The value is in inches
+      </p>
     </div>
     <div data-hook="weight" class="field">
       <%= f.label Spree.t(:weight) %><br>
       <%= f.text_field :weight, class: "form-control" %>
+      <p class="font-italic small-font-size mt-1">
+        The value is in lbs (enter ounces as a fraction of a lb)
+      </p>
     </div>
   </div>
 </div>
