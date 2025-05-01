@@ -224,7 +224,7 @@ module Spree
           units = Spree::ActiveShipping::Config[:units].to_sym
           packages = []
           item_specific_packages = convert_package_to_item_packages_array(package)
-
+          raise "the package = #{package} and at 0 #{package.at(0)}"
           item_specific_packages.each do |package|
             packages << ::ActiveShipping::Package.new(Measured::Weight.new(package.at(0), :lb), [package.at(1), package.at(2), package.at(3)], units: :units)
           end
