@@ -188,8 +188,6 @@ module Spree
             quantity = content_item.quantity
             product  = variant.product
 
-            raise variant.inspect
-
             if product.product_packages.any?
               product.product_packages.each do |product_package|
                 if product_package.weight.to_f <= max_weight or max_weight == 0
@@ -228,8 +226,9 @@ module Spree
           item_specific_packages = convert_package_to_item_packages_array(package)
           
           item_specific_packages.each do |package|
-            raise "#{item_specific_packages} and the package = #{package} and at 0 #{package.at(0)}"
-            packages << ::ActiveShipping::Package.new(Measured::Weight.new(package.at(0), :lb), [package.at(1), package.at(2), package.at(3)], units: :units)
+            # raise "#{item_specific_packages} and the package = #{package} and at 0 #{package.at(0)}"
+            # [[0.64e2, 0.9e1, 0.4e1, 0.4e1], [0.32e2, 0.8e1, 0.3e1, 0.4e1]] and the package = [0.64e2, 0.9e1, 0.4e1, 0.4e1] and at 0 64.0
+            packages << ::ActiveShipping::Package.new(package.at(0), [package.at(1), package.at(2), package.at(3)], units: :units)
           end
 
           Rails.logger.info(packages.inspect)
