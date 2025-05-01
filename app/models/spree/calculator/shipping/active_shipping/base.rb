@@ -188,6 +188,8 @@ module Spree
             quantity = content_item.quantity
             product  = variant.product
 
+            raise product.inspect
+
             if product.product_packages.any?
               product.product_packages.each do |product_package|
                 if product_package.weight.to_f <= max_weight or max_weight == 0
