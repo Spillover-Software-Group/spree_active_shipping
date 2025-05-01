@@ -188,7 +188,7 @@ module Spree
             quantity = content_item.quantity
             product  = variant.product
 
-            raise product.inspect
+            raise variant.inspect
 
             if product.product_packages.any?
               product.product_packages.each do |product_package|
