@@ -226,7 +226,7 @@ module Spree
           item_specific_packages = convert_package_to_item_packages_array(package)
 
           item_specific_packages.each do |package|
-            packages << ::ActiveShipping::Package.new(package.at(0), [package.at(1), package.at(2), package.at(3)], units: :units)
+            packages << ::ActiveShipping::Package.new(package.at(0), :lb, [package.at(1), package.at(2), package.at(3)], units: :units)
           end
 
           Rails.logger.info(packages.inspect)
