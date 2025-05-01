@@ -222,6 +222,7 @@ module Spree
         # Generates an array of Package objects based on the quantities and weights of the variants in the line items
         def packages(package)
           units = Spree::ActiveShipping::Config[:units].to_sym
+          raise units.inspect
           packages = []
           item_specific_packages = convert_package_to_item_packages_array(package)
           
