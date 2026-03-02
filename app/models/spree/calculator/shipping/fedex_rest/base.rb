@@ -7,13 +7,15 @@ module Spree
     module FedexRest
       class Base < Spree::Calculator::Shipping::ActiveShipping::Base
         def carrier
-          client_id = Spree::ActiveShipping::Config[:fedex_rest_client_id].presence
-          client_secret = Spree::ActiveShipping::Config[:fedex_rest_client_secret].presence
+          client_id = Spree::ActiveShipping::Config[:fedex_client_id].presence
+          client_secret = Spree::ActiveShipping::Config[:fedex_client_secret].presence
           client_account = Spree::ActiveShipping::Config[:fedex_account].presence
 
+          puts "FedEx REST Client Account: #{client_account}"
+
           unless client_id && client_secret
-            client_id = ENV['FEDEX_REST_CLIENT_ID']
-            client_secret = ENV['FEDEX_REST_CLIENT_SECRET']
+            client_id = ENV['FEDEX_CLIENT_ID']
+            client_secret = ENV['FEDEX_CLIENT_SECRET']
           end
 
           ::ActiveShipping::FedExRest.new(client_id:, client_secret:, client_account:)
