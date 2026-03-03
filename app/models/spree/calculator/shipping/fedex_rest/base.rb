@@ -12,7 +12,6 @@ module Spree
           destination = build_location(order.ship_address)
 
           rates_result = retrieve_rates_from_cache(package, origin, destination)
-          raise "rates_result: #{rates_result.inspect} from fedex_rest AQUI"
 
           return nil if rates_result.kind_of?(Spree::ShippingError)
           return nil if rates_result.empty?
@@ -42,7 +41,6 @@ module Spree
         def retrieve_rates(origin, destination, shipment_packages)
           # begin
             response = carrier.find_rates(origin, destination, shipment_packages)
-            raise "response: #{response.inspect} from retrive_rates OLA"
             # turn this beastly array into a nice little hash
             rates = response.rates.collect do |rate|
               next unless rate
