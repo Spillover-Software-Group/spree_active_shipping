@@ -11,8 +11,6 @@ module Spree
           client_secret = Spree::ActiveShipping::Config[:fedex_client_secret].presence
           client_account = Spree::ActiveShipping::Config[:fedex_account].presence
 
-          raise "FedEx REST Client Account: #{client_account}"
-
           unless client_id && client_secret
             client_id = ENV['FEDEX_CLIENT_ID']
             client_secret = ENV['FEDEX_CLIENT_SECRET']
