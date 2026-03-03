@@ -2,6 +2,10 @@ module Spree
   module Calculator::Shipping
     module Fedex
       class TwoDaySaturdayDelivery < Spree::Calculator::Shipping::Fedex::Base
+        def self.mail_class
+          "TWO_DAY_SATURDAY_DELIVERY"
+        end
+
         def self.description
           I18n.t("fedex.two_day_saturday_delivery")
         end
