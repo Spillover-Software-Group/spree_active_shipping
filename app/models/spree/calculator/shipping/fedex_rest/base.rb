@@ -11,14 +11,14 @@ module Spree
           client_secret = Spree::ActiveShipping::Config[:fedex_client_secret].presence
           client_account = Spree::ActiveShipping::Config[:fedex_account].presence
 
-          puts "FedEx REST Client Account: #{client_account}"
+          raise "FedEx REST Client Account: #{client_account}"
 
           unless client_id && client_secret
             client_id = ENV['FEDEX_CLIENT_ID']
             client_secret = ENV['FEDEX_CLIENT_SECRET']
           end
 
-          ::ActiveShipping::FedExRest.new(client_id:, client_secret:, client_account:)
+          ::ActiveShipping::FedexRest.new(client_id:, client_secret:, client_account:)
         end
 
         def retrieve_rates(origin, destination, shipment_packages)
