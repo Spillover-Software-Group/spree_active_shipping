@@ -1,11 +1,30 @@
-require_dependency 'spree/calculator'
-
 # DOCS: https://developer.fedex.com/api/en-us/catalog/rate/v1/docs.html
 
 module Spree
   module Calculator::Shipping
     module FedexRest
       class Base < Spree::Calculator::Shipping::ActiveShipping::Base
+        def compute_package(package)
+          order = package.order
+          stock_location = package.stock_location
+
+          origin = build_location(stock_location)
+          destination = build_location(order.ship_address)
+
+          rates_result = retrieve_rates_from_cache(package, origin, destination)
+
+          return nil if rates_result.kind_of?(Spree::ShippingError)
+          return nil if rates_result.empty?
+
+          rate = rates_result[self.class.mail_class]
+
+          return nil unless rate
+          rate = rate.to_f + (Spree::ActiveShipping::Config[:handling_fee].to_f || 0.0)
+
+          # divide by 100 since active_shipping rates are expressed as cents
+          return rate/100.0
+        end
+
         def carrier
           client_id = Spree::ActiveShipping::Config[:fedex_client_id].presence
           client_secret = Spree::ActiveShipping::Config[:fedex_client_secret].presence
