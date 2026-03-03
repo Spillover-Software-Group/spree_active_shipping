@@ -35,6 +35,7 @@ module Spree
             client_secret = ENV['FEDEX_CLIENT_SECRET']
           end
 
+          raise "from carrier GUSTAVO"
           ::ActiveShipping::FedexRest.new(client_id:, client_secret:, client_account:)
         end
 
