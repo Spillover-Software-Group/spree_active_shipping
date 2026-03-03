@@ -35,7 +35,7 @@ module Spree
             client_secret = ENV['FEDEX_CLIENT_SECRET']
           end
 
-          ::ActiveShipping::FedexRest.new(client_id:, client_secret:, client_account:)
+          ::ActiveShipping::Fedex.new(client_id:, client_secret:, client_account:)
         end
 
         def retrieve_rates(origin, destination, shipment_packages)
