@@ -26,14 +26,17 @@ module Spree
         end
 
         def carrier
-          client_id = Spree::ActiveShipping::Config[:fedex_client_id].presence
-          client_secret = Spree::ActiveShipping::Config[:fedex_client_secret].presence
-          client_account = Spree::ActiveShipping::Config[:fedex_account].presence
+          client_id = Spree::ActiveShipping::Config[:fedex_client_id].presence || ENV['FEDEX_CLIENT_ID']
+          client_secret = Spree::ActiveShipping::Config[:fedex_client_secret].presence || ENV['FEDEX_CLIENT_SECRET']
 
-          unless client_id && client_secret
-            client_id = ENV['FEDEX_CLIENT_ID']
-            client_secret = ENV['FEDEX_CLIENT_SECRET']
-          end
+          config_id = Spree::ActiveShipping::Config[:fedex_client_id].presence
+          config_secret = Spree::ActiveShipping::Config[:fedex_client_secret].presence
+
+          client_account = if config_id.present? && config_secret.present?
+                 Spree::ActiveShipping::Config[:fedex_account]
+               else
+                 ENV['FEDEX_SPILLOVER_ACCOUNT_NUMBER']
+               end
 
           ::ActiveShipping::FedEx.new(client_id:, client_secret:, client_account:)
         end
